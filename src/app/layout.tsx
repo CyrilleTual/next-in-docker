@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cedarville_Cursive } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+/////////  for using fonts whith tailwind
+export const cedar = Cedarville_Cursive({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-cedar",
+});
+
+import Header from "@/components/Header/Index";
+import { AppWrapper } from "@/contexts/app-context";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <AppWrapper>
+        <body>
+          <Header name={"toto"} />
+          {children}
+        </body>
+      </AppWrapper>
     </html>
   );
 }
